@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import './styles/global.scss';
 import './styles/utils.scss';
-import Bmob from 'hydrogen-js-sdk';
+// import Bmob from 'hydrogen-js-sdk';
 import {
     domRelatedOptForTheme,
     parsePathCustomThemeId,
@@ -64,46 +64,46 @@ const successTrans = (theme: Theme<any>) => {
 };
 
 // 从url初始化主题
-const customThemeIdFromPath = parsePathCustomThemeId(location.href);
+const customThemeIdFromPath = ''; // parsePathCustomThemeId(location.href);
 
 // Bmob初始化
 // @ts-ignore
-Bmob.initialize(
-    import.meta.env.VITE_BMOB_SECRETKEY,
-    import.meta.env.VITE_BMOB_SECCODE
-);
+// Bmob.initialize(
+//     import.meta.env.VITE_BMOB_SECRETKEY,
+//     import.meta.env.VITE_BMOB_SECCODE
+// );
 
 // 请求主题
-if (customThemeIdFromPath) {
-    const storageTheme = localStorage.getItem(customThemeIdFromPath);
-    if (storageTheme) {
-        try {
-            const customTheme = JSON.parse(storageTheme);
-            successTrans(customTheme);
-        } catch (e) {
-            errorTip('主题配置解析失败');
-        }
-    } else {
-        Bmob.Query('config')
-            .get(customThemeIdFromPath)
-            .then((res) => {
-                const { content, increment } = res as any;
-                localStorage.setItem(customThemeIdFromPath, content);
-                try {
-                    const customTheme = JSON.parse(content);
-                    successTrans(customTheme);
-                } catch (e) {
-                    errorTip('主题配置解析失败');
-                }
-                // 统计访问次数
-                increment('visitNum');
-                // @ts-ignore
-                res.save();
-            })
-            .catch(({ error }) => {
-                errorTip(error);
-            });
-    }
-} else {
+// if (customThemeIdFromPath) {
+//     const storageTheme = localStorage.getItem(customThemeIdFromPath);
+//     if (storageTheme) {
+//         try {
+//             const customTheme = JSON.parse(storageTheme);
+//             successTrans(customTheme);
+//         } catch (e) {
+//             errorTip('主题配置解析失败');
+//         }
+//     } else {
+//         Bmob.Query('config')
+//             .get(customThemeIdFromPath)
+//             .then((res) => {
+//                 const { content, increment } = res as any;
+//                 localStorage.setItem(customThemeIdFromPath, content);
+//                 try {
+//                     const customTheme = JSON.parse(content);
+//                     successTrans(customTheme);
+//                 } catch (e) {
+//                     errorTip('主题配置解析失败');
+//                 }
+//                 // 统计访问次数
+//                 increment('visitNum');
+//                 // @ts-ignore
+//                 res.save();
+//             })
+//             .catch(({ error }) => {
+//                 errorTip(error);
+//             });
+//     }
+// } else {
     successTrans(getDefaultTheme());
-}
+// }

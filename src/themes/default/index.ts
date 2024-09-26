@@ -31,13 +31,13 @@ export const getDefaultTheme: () => Theme<DefaultSoundNames> = () => {
         sounds: [
             {
                 name: 'button-click',
-                src: 'https://minio.streakingman.com/solvable-sheep-game/sound-button-click.mp3',
+                src: 'https://game2h.com/sound/default/button-click.mp3',
             },
             {
                 name: 'triple',
-                src: 'https://minio.streakingman.com/solvable-sheep-game/sound-triple.mp3',
+                src: 'https://game2h.com/sound/default/triple.mp3',
             },
         ],
-        bgm: 'https://minio.streakingman.com/solvable-sheep-game/sound-disco.mp3',
+        bgm: 'https://game2h.com/sound/default/disco.mp3',
     };
 };

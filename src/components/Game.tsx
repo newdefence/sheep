@@ -427,7 +427,8 @@ const Game: FC<{
     const [startTime, setStartTime] = useState<number>(0);
     const [now, setNow] = useState<number>(0);
     const [usedTime, setUsedTime] = useState<number>(initTime);
-    const intervalRef = useRef<NodeJS.Timeout | null>(null);
+    // const intervalRef = useRef<NodeJS.Timeout | null>(null);
+    const intervalRef = useRef<number | null>(null);
     // 结束时重置计时器和关卡信息
     useEffect(() => {
         if (finished) {
